@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-Услуги
+{% for service in service_list %}
+{{ service }}
+{% endfor %}
 {% endblock content %}
