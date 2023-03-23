@@ -21,3 +21,18 @@ class Master(models.Model):
         db_table = 'masters'
         verbose_name = 'Мастер'
         verbose_name_plural = 'Мастера'
+
+
+class Calendar(models.Model):
+    master = models.ForeignKey(Master, on_delete=models.CASCADE, verbose_name='Мастер')
+    date = models.DateField(verbose_name='Дата')
+    time_start = models.TimeField(verbose_name='Начало рабочего дня')
+    time_end = models.TimeField(verbose_name='Конец рабочего дня')
+
+    def __str__(self):
+        return self.master.name
+
+    class Meta:
+        db_table = 'calendars'
+        verbose_name = 'График работы'
+        verbose_name_plural = 'Графики работы'
