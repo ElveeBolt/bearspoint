@@ -1,7 +1,26 @@
 {% extends 'base.html' %}
 
 {% block content %}
-{% for service in service_list %}
-{{ service }}
-{% endfor %}
+<div class="container">
+    <div class="header mb-4">
+        <h1>{{ title }}</h1>
+        <div class="subtitle text-muted">{{ subtitle }}</div>
+    </div>
+    <div class="row">
+        {% for service in service_list %}
+        <div class="col-6">
+            <div class="card card-service mb-4">
+                <h2>{{ service.title }}</h2>
+                <div class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi esse expedita, facere id repellat voluptas?</div>
+                <div class="price">{{ service.price }}</div>
+                <div class="time">{{ service.time }}</div>
+                <a href="{% url 'service' pk=service.id %}" class="btn btn-primary">Смотреть детали</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+
 {% endblock content %}
