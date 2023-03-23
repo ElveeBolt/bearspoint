@@ -28,6 +28,7 @@ class ServiceListView(ListView):
 
     def get_queryset(self):
         queryset = super().get_queryset().filter(
+            master__status=True,
             master__calendar__date__range=(datetime.date.today(), datetime.date.today() + datetime.timedelta(days=7))
         ).distinct()
 
