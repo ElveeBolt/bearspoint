@@ -9,7 +9,7 @@ class MasterListView(ListView):
     context_object_name = 'master_list'
     extra_context = {
         'title': 'Мастера',
-        'subtitle': 'Lorem Ipsum'
+        'subtitle': 'Список наших мастеров'
     }
 
 

@@ -1,7 +1,23 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
-{% for master in master_list %}
-{{ master }}
-{% endfor %}
+<div class="container">
+    <div class="header mb-4">
+        <h1>{{ title }}</h1>
+        <div class="subtitle text-muted">{{ subtitle }}</div>
+    </div>
+    <div class="row">
+        {% for master in master_list %}
+        <div class="col-3">
+            <div class="card card-master mb-4 d-flex text-center">
+                <img src="{% static 'img/barber.png' %}" alt="" class="mb-3">
+                <h2 class="mb-3">{{ master.name }}</h2>
+                <div class="master-rang text-muted mb-3"><i class="fi fi-rr-chess-queen me-1"></i>{{ master.get_rang_display }}</div>
+                <a href="{% url 'master' pk=master.id %}" class="btn btn-primary">Подробности</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock content %}
