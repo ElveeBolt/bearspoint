@@ -1,4 +1,5 @@
 from django.views.generic import TemplateView
+from master.models import Master
 
 
 # Create your views here.
@@ -8,3 +9,8 @@ class IndexView(TemplateView):
         'title': 'BearsPoint',
         'subtitle': 'Мужское пространство, где вы можете позаботится о своём образе'
     }
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['master_list'] = Master.objects.all()
+        return context
