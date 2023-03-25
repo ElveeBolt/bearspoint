@@ -11,7 +11,7 @@ class ServiceListView(ListView):
     context_object_name = 'service_list'
     extra_context = {
         'title': 'Услуги',
-        'subtitle': 'Lorem Ipsum'
+        'subtitle': 'Список наших цен и услуг доступных в ближайшие 7 дней'
     }
 
     # def get_queryset(self):
