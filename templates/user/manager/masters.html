@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="header">
+        <h1>{{ title }}</h1>
+        <div class="subtitle">{{ subtitle }}</div>
+    </div>
+    <div class="row">
+        <div class="col-8">
+            <div class="card">
+                <div class="card-heading">
+                    <h2>Lorem15</h2>
+                    <div class="subtitle">Lorem ipsum</div>
+                </div>
+                <table id="table-masters" class="display">
+                    <thead>
+                        <tr>
+                            <th>Имя мастера</th>
+                            <th>Ранг</th>
+                            <th>Телефон</th>
+                            <th>Статус</th>
+                            <th>Действия</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for master in master_list %}
+                    <tr>
+                        <td>{{ master.name }}</td>
+                        <td>{{ master.rang }}</td>
+                        <td>{{ master.phone }}</td>
+                        <td>{{ master.status }}</td>
+                        <td>
+                            <a href="{% url 'manager_master' pk=master.id %}">Смотреть</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {% include 'user/menu.html' %}
+    </div>
+</div>
+{% endblock content %}
+{% block scripts %}
+<script>
+$('#table-masters').DataTable({
+    searching: false,
+    paging: false,
+    info: false
+});
+</script>
+{% endblock scripts %}
