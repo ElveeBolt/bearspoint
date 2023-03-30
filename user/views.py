@@ -69,7 +69,7 @@ class ManagerCalendarUpdateView(UpdateView):
     context_object_name = 'calendar'
     extra_context = {
         'title': 'Редактирование мастера',
-        'subtitle': 'Lorem'
+        'subtitle': 'Внесение изменений к мастеру'
     }
 
 
@@ -93,8 +93,8 @@ class ManagerServiceListView(ListView):
     template_name = 'user/manager/services.html'
     context_object_name = 'service_list'
     extra_context = {
-        'title': 'Управление услугами',
-        'subtitle': 'Lorem'
+        'title': 'Услуги',
+        'subtitle': 'Управление услугами салона'
     }
 
 
@@ -105,7 +105,7 @@ class ManagerServiceUpdateView(UpdateView):
     context_object_name = 'service'
     extra_context = {
         'title': 'Редактирование услуги',
-        'subtitle': 'Lorem'
+        'subtitle': 'Внесение изменений в услугу'
     }
 
 
@@ -114,8 +114,8 @@ class ManagerServiceCreateView(CreateView):
     form_class = ServiceForm
     template_name = 'user/manager/service.html'
     extra_context = {
-        'title': 'Добавление услуги',
-        'subtitle': 'Lorem',
+        'title': 'Новая услуга',
+        'subtitle': 'Добавление новой услуги',
     }
 
 

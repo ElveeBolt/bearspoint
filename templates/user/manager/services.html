@@ -4,17 +4,24 @@
 <div class="container">
     <div class="header">
         <h1>{{ title }}</h1>
-        <div class="subtitle">{{ subtitle }}</div>
+        <div class="subtitle text-muted">{{ subtitle }}</div>
     </div>
     <div class="row">
         <div class="col-8">
-            <div class="card">
-                <a href="{% url 'manager_service_add' %}" class="btn btn-primary">Добавить услугу</a>
+            <div class="card card-manager">
+                <div class="icon"><i class="fi fi-rr-soap"></i></div>
+                <div>
+                    <h3>Добавление услуги</h3>
+                    <div class="mb-3 text-muted small">Для того, чтобы добавить новую услугу, которую в дальнейшем смогут предоставлять мастера, перейдите по ссылке ниже.</div>
+                    <div>
+                        <a href="{% url 'manager_service_add' %}" class="btn btn-primary btn-with-icon"><i class="fi fi-rr-add"></i>Добавить услугу</a>
+                    </div>
+                </div>
             </div>
             <div class="card">
                 <div class="card-heading">
-                    <h2>Lorem15</h2>
-                    <div class="subtitle">Lorem ipsum</div>
+                    <h2>Услуги</h2>
+                    <div class="subtitle text-muted">Список услуг, которые предоставляет салон</div>
                 </div>
                 <table id="table-services" class="display">
                     <thead>
@@ -32,8 +39,8 @@
                         <td>{{ service.price }}</td>
                         <td>{{ service.time }}</td>
                         <td>
-                            <a href="{% url 'manager_service' pk=service.id %}">Смотреть</a>
-                            <button type="button" class="btn btn-icon btn-sm btn-with-icon btn-delete-service" data-bs-toggle="modal" data-bs-target="#delete-service" data-url="{% url 'manager_service_delete' pk=service.id %}" data-title="{{ service.name }}"><i class="fi fi-rr-trash"></i></button>
+                            <a href="{% url 'manager_service' pk=service.id %}" class="btn btn-sm btn-with-icon"><i class="fi fi-rr-eye"></i>Смотреть</a>
+                            <button type="button" class="btn btn-sm btn-with-icon btn-delete-service" data-bs-toggle="modal" data-bs-target="#delete-service" data-url="{% url 'manager_service_delete' pk=service.id %}" data-title="{{ service.title }}"><i class="fi fi-rr-trash"></i>Удалить</button>
                         </td>
                     </tr>
                     {% endfor %}
