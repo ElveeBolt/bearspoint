@@ -1,5 +1,5 @@
 from django import forms
-from .models import Master
+from .models import Master, Calendar
 from service.models import Service
 
 
@@ -61,4 +61,55 @@ class MasterForm(forms.ModelForm):
 
     class Meta:
         model = Master
+        fields = '__all__'
+
+
+class CalendarForm(forms.ModelForm):
+    master = forms.ModelChoiceField(
+        label='Мастер:',
+        required=True,
+        queryset=Master.objects.all(),
+        widget=forms.Select(
+            attrs={
+                'class': 'form-select',
+                'placeholder': 'Укажите мастера...'
+            }
+        )
+    )
+    date = forms.DateField(
+        label='Дата:',
+        required=True,
+        widget=forms.DateInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Укажите дату...',
+                'type': 'date'
+            }
+        )
+    )
+    time_start = forms.TimeField(
+        label='Время начала:',
+        required=True,
+        widget=forms.TimeInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Укажите время...',
+                'type': 'time'
+            }
+        )
+    )
+    time_end = forms.TimeField(
+        label='Время завершения:',
+        required=True,
+        widget=forms.TimeInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Укажите время...',
+                'type': 'time'
+            }
+        )
+    )
+
+    class Meta:
+        model = Calendar
         fields = '__all__'

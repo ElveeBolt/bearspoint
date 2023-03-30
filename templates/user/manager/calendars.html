@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="header">
+        <h1>{{ title }}</h1>
+        <div class="subtitle">{{ subtitle }}</div>
+    </div>
+    <div class="row">
+        <div class="col-8">
+            <div class="card">
+                <a href="{% url 'manager_calendar_add' %}" class="btn btn-primary">Добавить график</a>
+            </div>
+            <div class="card">
+                <div class="card-heading">
+                    <h2>Lorem15</h2>
+                    <div class="subtitle">Lorem ipsum</div>
+                </div>
+                <table id="table-calendars" class="display">
+                    <thead>
+                        <tr>
+                            <th>Имя мастера</th>
+                            <th>Дата</th>
+                            <th>Время начала</th>
+                            <th>Время завершения</th>
+                            <th>Действия</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for calendar in calendar_list %}
+                    <tr>
+                        <td>{{ calendar.master }}</td>
+                        <td>{{ calendar.date }}</td>
+                        <td>{{ calendar.time_start }}</td>
+                        <td>{{ calendar.time_end }}</td>
+                        <td>
+                            <a href="{% url 'manager_calendar' pk=calendar.id %}">Смотреть</a>
+                            <button type="button" class="btn btn-icon btn-sm btn-with-icon btn-delete-calendar" data-bs-toggle="modal" data-bs-target="#delete-calendar" data-url="{% url 'manager_calendar_delete' pk=calendar.id %}" data-title="{{ calendar.master }}"><i class="fi fi-rr-trash"></i></button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {% include 'user/menu.html' %}
+    </div>
+</div>
+
+<div class="modal fade" id="delete-calendar" tabindex="-1" aria-labelledby="delete-calendar-label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="delete-calendar-label"></h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Данная операция приведет к удалению графика без возможности восстановления. Подтвердите это действие.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Закрыть</button>
+          <form method="post" action="">
+              {% csrf_token %}
+              <button type="submit" class="btn">Подтвердить</button>
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
+{% block scripts %}
+<script>
+$(".btn-delete-calendar").click(function () {
+    var url = $(this).attr('data-url');
+    var title = $(this).attr('data-title');
+
+    $('#delete-calendar-label').text(title);
+    $('form').attr('action', url);
+});
+$('#table-calendars').DataTable({
+    searching: false,
+    paging: false,
+    info: false
+});
+</script>
+{% endblock scripts %}

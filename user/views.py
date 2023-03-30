@@ -1,6 +1,6 @@
 from django.views.generic import TemplateView, ListView, UpdateView, DeleteView, CreateView
-from master.models import Master
-from master.forms import MasterForm
+from master.models import Master, Calendar
+from master.forms import MasterForm, CalendarForm
 from service.forms import ServiceForm
 from service.models import Service
 
@@ -48,6 +48,42 @@ class ManagerMasterCreateView(CreateView):
 class ManagerMasterDeleteView(DeleteView):
     model = Master
     success_url = "/user/manager/masters"
+
+
+class ManagerCalendarListView(ListView):
+    model = Calendar
+    template_name = 'user/manager/calendars.html'
+    context_object_name = 'calendar_list'
+    extra_context = {
+        'title': 'Управление графиками работы',
+        'subtitle': 'Lorem'
+    }
+
+
+class ManagerCalendarUpdateView(UpdateView):
+    model = Calendar
+    form_class = CalendarForm
+    template_name = 'user/manager/calendar.html'
+    context_object_name = 'calendar'
+    extra_context = {
+        'title': 'Редактирование мастера',
+        'subtitle': 'Lorem'
+    }
+
+
+class ManagerCalendarCreateView(CreateView):
+    model = Calendar
+    form_class = CalendarForm
+    template_name = 'user/manager/calendar.html'
+    extra_context = {
+        'title': 'Добавление графика работы',
+        'subtitle': 'Lorem',
+    }
+
+
+class ManagerCalendarDeleteView(DeleteView):
+    model = Calendar
+    success_url = "/user/manager/calendars"
 
 
 class ManagerServiceListView(ListView):

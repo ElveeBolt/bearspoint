@@ -40,6 +40,9 @@ class Calendar(models.Model):
     def __str__(self):
         return self.master.name
 
+    def get_absolute_url(self):
+        return reverse('manager_calendars')
+
     class Meta:
         db_table = 'calendars'
         verbose_name = 'График работы'
