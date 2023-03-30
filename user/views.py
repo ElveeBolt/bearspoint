@@ -1,4 +1,4 @@
-from django.views.generic import TemplateView, ListView, UpdateView, DeleteView
+from django.views.generic import TemplateView, ListView, UpdateView, DeleteView, CreateView
 from master.models import Master
 from master.forms import MasterForm
 
@@ -30,6 +30,16 @@ class ManagerMasterUpdateView(UpdateView):
     extra_context = {
         'title': 'Редактирование мастера',
         'subtitle': 'Lorem'
+    }
+
+
+class ManagerMasterCreateView(CreateView):
+    model = Master
+    form_class = MasterForm
+    template_name = 'user/manager/master.html'
+    extra_context = {
+        'title': 'Добавление мастера',
+        'subtitle': 'Lorem',
     }
 
 

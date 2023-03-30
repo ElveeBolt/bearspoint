@@ -9,6 +9,9 @@
     <div class="row">
         <div class="col-8">
             <div class="card">
+                <a href="{% url 'manager_masters_add' %}" class="btn btn-primary">Добавить мастера</a>
+            </div>
+            <div class="card">
                 <div class="card-heading">
                     <h2>Lorem15</h2>
                     <div class="subtitle">Lorem ipsum</div>
@@ -32,6 +35,7 @@
                         <td>{{ master.status }}</td>
                         <td>
                             <a href="{% url 'manager_master' pk=master.id %}">Смотреть</a>
+                            <button type="button" class="btn btn-icon btn-sm btn-with-icon btn-delete-master" data-bs-toggle="modal" data-bs-target="#delete-master" data-url="{% url 'manager_masters_delete' pk=master.id %}" data-title="{{ master.name }}"><i class="fi fi-rr-trash"></i></button>
                         </td>
                     </tr>
                     {% endfor %}
@@ -42,9 +46,37 @@
         {% include 'user/menu.html' %}
     </div>
 </div>
+
+<div class="modal fade" id="delete-master" tabindex="-1" aria-labelledby="delete-master-label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="delete-master-label"></h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Данная операция приведет к удалению мастера без возможности восстановления. Подтвердите это действие.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Закрыть</button>
+          <form method="post" action="">
+              {% csrf_token %}
+              <button type="submit" class="btn">Подтвердить</button>
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock content %}
 {% block scripts %}
 <script>
+$(".btn-delete-master").click(function () {
+    var url = $(this).attr('data-url');
+    var title = $(this).attr('data-title');
+
+    $('#delete-master-label').text(title);
+    $('form').attr('action', url);
+});
 $('#table-masters').DataTable({
     searching: false,
     paging: false,
