@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="header">
+        <h1>{{ title }}</h1>
+        <div class="subtitle">{{ subtitle }}</div>
+    </div>
+    <div class="row">
+        <div class="col-8">
+            <div class="card">
+                <div class="card-heading">
+                    <h2>Lorem15</h2>
+                    <div class="subtitle">Lorem ipsum</div>
+                </div>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="{{ form.master.auto_id }}" class="form-label">{{ form.master.label }}</label>
+                        {{ form.master }}
+                        <div class="form-text">{{ form.master.help_text }}</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="{{ form.service.auto_id }}" class="form-label">{{ form.service.label }}</label>
+                        {{ form.service }}
+                        <div class="form-text">{{ form.service.help_text }}</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="{{ form.user.auto_id }}" class="form-label">{{ form.user.label }}</label>
+                        {{ form.user }}
+                        <div class="form-text">{{ form.user.help_text }}</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="{{ form.date.auto_id }}" class="form-label">{{ form.date.label }}</label>
+                        {{ form.date }}
+                        <div class="form-text">{{ form.date.help_text }}</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="{{ form.time_start.auto_id }}" class="form-label">{{ form.time_start.label }}</label>
+                        {{ form.time_start }}
+                        <div class="form-text">{{ form.time_start.help_text }}</div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Сохранить</button>
+                    {{ form.errors }}
+                </form>
+            </div>
+        </div>
+        {% include 'user/menu.html' %}
+    </div>
+</div>
+{% endblock content %}

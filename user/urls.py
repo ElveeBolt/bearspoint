@@ -1,7 +1,9 @@
 from django.urls import path
 from .views import UserView, ManagerMasterListView, ManagerMasterUpdateView, ManagerMasterCreateView, \
     ManagerMasterDeleteView, ManagerServiceDeleteView, ManagerServiceListView, ManagerServiceCreateView, \
-    ManagerServiceUpdateView, ManagerCalendarUpdateView, ManagerCalendarListView, ManagerCalendarCreateView, ManagerCalendarDeleteView
+    ManagerServiceUpdateView, ManagerCalendarUpdateView, ManagerCalendarListView, ManagerCalendarCreateView, \
+    ManagerCalendarDeleteView, ManagerBookingUpdateView, ManagerBookingCreateView, ManagerBookingDeleteView, \
+    ManagerBookingListView
 
 urlpatterns = [
     path('', UserView.as_view(), name='user'),
@@ -18,5 +20,10 @@ urlpatterns = [
     path('manager/services', ManagerServiceListView.as_view(), name='manager_services'),
     path('manager/services/<int:pk>', ManagerServiceUpdateView.as_view(), name='manager_service'),
     path('manager/services/add', ManagerServiceCreateView.as_view(), name='manager_service_add'),
-    path('manager/services/delete/<int:pk>', ManagerServiceDeleteView.as_view(), name='manager_service_delete')
+    path('manager/services/delete/<int:pk>', ManagerServiceDeleteView.as_view(), name='manager_service_delete'),
+
+    path('manager/bookings', ManagerBookingListView.as_view(), name='manager_bookings'),
+    path('manager/bookings/<int:pk>', ManagerBookingUpdateView.as_view(), name='manager_booking'),
+    path('manager/bookings/add', ManagerBookingCreateView.as_view(), name='manager_booking_add'),
+    path('manager/bookings/delete/<int:pk>', ManagerBookingDeleteView.as_view(), name='manager_booking_delete'),
 ]

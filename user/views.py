@@ -3,6 +3,8 @@ from master.models import Master, Calendar
 from master.forms import MasterForm, CalendarForm
 from service.forms import ServiceForm
 from service.models import Service
+from booking.models import Booking
+from booking.forms import BookingForm
 
 
 # Create your views here.
@@ -120,3 +122,39 @@ class ManagerServiceCreateView(CreateView):
 class ManagerServiceDeleteView(DeleteView):
     model = Service
     success_url = "/user/manager/services"
+
+
+class ManagerBookingListView(ListView):
+    model = Booking
+    template_name = 'user/manager/bookings.html'
+    context_object_name = 'booking_list'
+    extra_context = {
+        'title': 'Управление бронированиями',
+        'subtitle': 'Lorem'
+    }
+
+
+class ManagerBookingUpdateView(UpdateView):
+    model = Booking
+    form_class = BookingForm
+    template_name = 'user/manager/booking.html'
+    context_object_name = 'service'
+    extra_context = {
+        'title': 'Редактирование бронирования',
+        'subtitle': 'Lorem'
+    }
+
+
+class ManagerBookingCreateView(CreateView):
+    model = Booking
+    form_class = BookingForm
+    template_name = 'user/manager/booking.html'
+    extra_context = {
+        'title': 'Добавление бронирования',
+        'subtitle': 'Lorem',
+    }
+
+
+class ManagerBookingDeleteView(DeleteView):
+    model = Booking
+    success_url = "/user/manager/bookings"

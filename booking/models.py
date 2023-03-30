@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from master.models import Master
 from service.models import Service
+from django.urls import reverse
 
 
 # Create your models here.
@@ -14,6 +15,9 @@ class Booking(models.Model):
 
     def __str__(self):
         return self.master
+
+    def get_absolute_url(self):
+        return reverse('manager_bookings')
 
     class Meta:
         db_table = 'bookings'

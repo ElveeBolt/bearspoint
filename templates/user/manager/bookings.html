@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="header">
+        <h1>{{ title }}</h1>
+        <div class="subtitle">{{ subtitle }}</div>
+    </div>
+    <div class="row">
+        <div class="col-8">
+            <div class="card">
+                <a href="{% url 'manager_booking_add' %}" class="btn btn-primary">Добавить бронирование</a>
+            </div>
+            <div class="card">
+                <div class="card-heading">
+                    <h2>Lorem15</h2>
+                    <div class="subtitle">Lorem ipsum</div>
+                </div>
+                <table id="table-bookings" class="display">
+                    <thead>
+                        <tr>
+                            <th>Имя мастера</th>
+                            <th>Услуга</th>
+                            <th>Пользователь</th>
+                            <th>Дата</th>
+                            <th>Время</th>
+                            <th>Действия</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for booking in booking_list %}
+                    <tr>
+                        <td>{{ booking.master }}</td>
+                        <td>{{ booking.service }}</td>
+                        <td>{{ booking.user }}</td>
+                        <td>{{ booking.date }}</td>
+                        <td>{{ booking.time_start }}</td>
+                        <td>
+                            <a href="{% url 'manager_booking' pk=booking.id %}">Смотреть</a>
+                            <button type="button" class="btn btn-icon btn-sm btn-with-icon btn-delete-booking" data-bs-toggle="modal" data-bs-target="#delete-booking" data-url="{% url 'manager_booking_delete' pk=booking.id %}" data-title="{{ booking.master }}"><i class="fi fi-rr-trash"></i></button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {% include 'user/menu.html' %}
+    </div>
+</div>
+
+<div class="modal fade" id="delete-booking" tabindex="-1" aria-labelledby="delete-booking-label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="delete-booking-label"></h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Данная операция приведет к удалению бронирования без возможности восстановления. Подтвердите это действие.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Закрыть</button>
+          <form method="post" action="">
+              {% csrf_token %}
+              <button type="submit" class="btn">Подтвердить</button>
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
+{% block scripts %}
+<script>
+$(".btn-delete-booking").click(function () {
+    var url = $(this).attr('data-url');
+    var title = $(this).attr('data-title');
+
+    $('#delete-booking-label').text(title);
+    $('form').attr('action', url);
+});
+$('#table-bookings').DataTable({
+    searching: false,
+    paging: false,
+    info: false
+});
+</script>
+{% endblock scripts %}
