@@ -32,8 +32,12 @@
                     </div>
                     <div class="mb-3">
                         <label for="{{ form.service.auto_id }}" class="form-label">{{ form.service.label }}</label>
-                        {{ form.service }}
-                        <div class="form-text">{{ form.service.help_text }}</div>
+                        {% for pk, service in form.service.field.widget.choices %}
+                            <div class="form-check">
+                                <input id="{{ form.service.name }}_{{ pk }}" class="form-check-input" type="checkbox" name="{{ form.service.name }}" value="{{ pk }}" {% if pk in form.service.value %} checked="checked" {% endif %}>
+                                <label class="form-check-label" for="{{ form.service.name }}_{{ pk }}">{{ service }}</label>
+                            </div>
+                        {% endfor %}
                     </div>
                     <div class="mb-3">
                         <label for="{{ form.status.auto_id }}" class="form-label">{{ form.status.label }}</label>
