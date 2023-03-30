@@ -4,8 +4,11 @@
     --main-bg: #f9f6f2;
     --navbar-bg: #222227;
     --main-text-color: #42403f;
-    --text-muted: #989898;
+    --text-muted: #828282;
     --main-color: #9e8a78;
+    --main-color-hover: #bd9a7c;
+    --submain-color: #ede5e5;
+    --border-color: #edebeb;
 }
 
 body{
@@ -14,13 +17,64 @@ body{
     font-family: 'Montserrat', sans-serif;
 }
 
-.btn{
+.text-muted{
+    color: var(--text-muted)!important;
+}
+
+.btn {
     border: none;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px 15px;
+    background: var(--submain-color);
+    color: var(--main-color);
+    text-decoration:none!important;
+}
+
+.btn:hover{
+    background: var(--main-color);
+    color:#fff;
 }
 
 .btn-primary{
     background: var(--main-color);
-    color: #fff;
+    color:#fff;
+}
+
+.btn-primary:hover{
+    background: var(--main-color-hover);
+    color:#fff;
+}
+
+.d-grid .btn-with-icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-with-icon .fi {
+    font-size: 16px;
+    line-height: 1;
+    float: left;
+    margin-right: 5px;
+    padding-top: 2px;
+}
+
+.btn-sm {
+    font-size: 13px;
+    padding: 5px 15px;
+}
+
+.btn-sm.btn-with-icon .fi {
+    font-size: 14px;
+}
+
+.btn-sm.btn-icon{
+    padding: 5px 10px;
+}
+
+.btn-icon .fi{
+    margin: 0;
 }
 
 .navbar{
@@ -37,10 +91,82 @@ body{
     padding: 20px;
     border: none;
     border-radius: 0;
+    margin-bottom: 30px;
 }
 
-.card h2{
-    font-size: 22px;
+.card-heading {
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.card-heading h2{
+  font-size: 22px;
+}
+
+.card-manager{
+    padding-left: 100px;
+}
+
+.card-manager h3 {
+    font-size: 18px;
+}
+
+.card-manager .icon {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    font-size: 34px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    line-height: 1;
+    background: var(--main-bg);
+    color: var(--main-color);
+    position: absolute;
+    left: 20px;
+    top: 20px;
+}
+
+.list-menu li {
+    padding: 10px 0;
+    border: none;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.list-menu li:last-child{
+    padding-bottom:0;
+    border:none;
+}
+
+.list-menu a,
+.list-menu span{
+    color: var(--main-text-color);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.list-menu a i,
+.list-menu span i{
+    font-size: 18px;
+    float: left;
+    margin-right: 5px;
+    line-height: 1;
+}
+
+.list-menu a:hover,
+.list-menu span:hover{
+    color: var(--main-color);
+}
+
+.header {
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.header h1 {
+    font-size: 28px;
 }
 
 section {
@@ -71,6 +197,56 @@ section {
 
 #home .subtitle{
     font-size: 20px;
+}
+
+table.dataTable {
+    font-size: 13px;
+}
+
+table.dataTable.stripe>tbody>tr.odd>*,
+table.dataTable.display>tbody>tr.odd>* {
+    box-shadow: none;
+    background: var(--main-bg);
+    border: none;
+}
+
+table.dataTable.row-border tbody th,
+table.dataTable.row-border tbody td,
+table.dataTable.display tbody th,
+table.dataTable.display tbody td {
+    border: none;
+}
+
+table.dataTable thead th,
+table.dataTable thead td {
+    padding: 10px;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+table.dataTable tbody th,
+table.dataTable tbody td {
+    padding: 10px 10px;
+}
+
+table.dataTable.hover>tbody>tr:hover>*,
+table.dataTable.display>tbody>tr:hover>*,
+table.dataTable.display>tbody>tr.even>.sorting_1,
+table.dataTable.order-column.stripe>tbody>tr.even>.sorting_1,
+table.dataTable.display>tbody>tr.odd>.sorting_1,
+table.dataTable.order-column.stripe>tbody>tr.odd>.sorting_1,
+table.dataTable.order-column>tbody tr>.sorting_1,
+table.dataTable.order-column>tbody tr>.sorting_2,
+table.dataTable.order-column>tbody tr>.sorting_3,
+table.dataTable.display>tbody tr>.sorting_1,
+table.dataTable.display>tbody tr>.sorting_2,
+table.dataTable.display>tbody tr>.sorting_3{
+    box-shadow:none
+}
+
+table.dataTable.no-footer {
+    border: none;
 }
 
 footer{

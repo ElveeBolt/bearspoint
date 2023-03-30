@@ -4,14 +4,14 @@
 <div class="container">
     <div class="header">
         <h1>{{ title }}</h1>
-        <div class="subtitle">{{ subtitle }}</div>
+        <div class="subtitle text-muted">{{ subtitle }}</div>
     </div>
     <div class="row">
         <div class="col-8">
             <div class="card">
                 <div class="card-heading">
-                    <h2>Lorem15</h2>
-                    <div class="subtitle">Lorem ipsum</div>
+                    <h2>Редактирование графика</h2>
+                    <div class="subtitle text-muted">Для того, чтобы отредактировать график работы заполните форму ниже</div>
                 </div>
                 <form method="post">
                     {% csrf_token %}
@@ -25,17 +25,23 @@
                         {{ form.date }}
                         <div class="form-text">{{ form.date.help_text }}</div>
                     </div>
-                    <div class="mb-3">
-                        <label for="{{ form.time_start.auto_id }}" class="form-label">{{ form.time_start.label }}</label>
-                        {{ form.time_start }}
-                        <div class="form-text">{{ form.time_start.help_text }}</div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label for="{{ form.time_start.auto_id }}" class="form-label">{{ form.time_start.label }}</label>
+                                {{ form.time_start }}
+                                <div class="form-text">{{ form.time_start.help_text }}</div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label for="{{ form.time_end.auto_id }}" class="form-label">{{ form.time_end.label }}</label>
+                                {{ form.time_end }}
+                                <div class="form-text">{{ form.time_end.help_text }}</div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <label for="{{ form.time_end.auto_id }}" class="form-label">{{ form.time_end.label }}</label>
-                        {{ form.time_end }}
-                        <div class="form-text">{{ form.time_end.help_text }}</div>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Сохранить</button>
+                    <button type="submit" class="btn btn-primary btn-with-icon"><i class="fi fi-rr-disk"></i>Сохранить</button>
                     {{ form.errors }}
                 </form>
             </div>

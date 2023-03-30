@@ -57,8 +57,8 @@ class ManagerCalendarListView(ListView):
     template_name = 'user/manager/calendars.html'
     context_object_name = 'calendar_list'
     extra_context = {
-        'title': 'Управление графиками работы',
-        'subtitle': 'Lorem'
+        'title': 'Графики работы',
+        'subtitle': 'Управление графиками работы мастеров салона'
     }
 
 
@@ -78,8 +78,8 @@ class ManagerCalendarCreateView(CreateView):
     form_class = CalendarForm
     template_name = 'user/manager/calendar.html'
     extra_context = {
-        'title': 'Добавление графика работы',
-        'subtitle': 'Lorem',
+        'title': 'Новый график работы',
+        'subtitle': 'Добавление графика работы',
     }
 
 

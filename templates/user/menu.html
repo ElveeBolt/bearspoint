@@ -2,14 +2,14 @@
     <div class="card">
         <div class="card-heading">
             <h2>Меню администратора</h2>
-            <div class="subtitle">Lorem ipsum</div>
+            <div class="subtitle text-muted">Управление BearsPoint</div>
         </div>
         <div class="menu">
-            <ul class="list-group">
-                <li class="list-group-item"><a href="{% url 'manager_bookings' %}">Бронирования</a></li>
-                <li class="list-group-item"><a href="{% url 'manager_masters' %}">Управление мастерами</a></li>
-                <li class="list-group-item"><a href="{% url 'manager_services' %}">Управление услугами</a></li>
-                <li class="list-group-item"><a href="{% url 'manager_calendars' %}">Управление графиком</a></li>
+            <ul class="list-group list-menu">
+                <li class="list-group-item"><a href="{% url 'manager_bookings' %}"><i class="fi fi-rr-calendar"></i>Бронирования</a></li>
+                <li class="list-group-item"><a href="{% url 'manager_masters' %}"><i class="fi fi-rr-user"></i>Мастера</a></li>
+                <li class="list-group-item"><a href="{% url 'manager_services' %}"><i class="fi fi-rr-soap"></i>Услуги</a></li>
+                <li class="list-group-item"><a href="{% url 'manager_calendars' %}"><i class="fi fi-rr-time-check"></i>Графики работы</a></li>
             </ul>
         </div>
     </div>
