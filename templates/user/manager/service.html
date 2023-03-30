@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="header">
+        <h1>{{ title }}</h1>
+        <div class="subtitle">{{ subtitle }}</div>
+    </div>
+    <div class="row">
+        <div class="col-8">
+            <div class="card">
+                <div class="card-heading">
+                    <h2>Lorem15</h2>
+                    <div class="subtitle">Lorem ipsum</div>
+                </div>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="{{ form.title.auto_id }}" class="form-label">{{ form.title.label }}</label>
+                        {{ form.title }}
+                        <div class="form-text">{{ form.title.help_text }}</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="{{ form.description.auto_id }}" class="form-label">{{ form.description.label }}</label>
+                        {{ form.description }}
+                        <div class="form-text">{{ form.description.help_text }}</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="{{ form.time.auto_id }}" class="form-label">{{ form.time.label }}</label>
+                        {{ form.time }}
+                        <div class="form-text">{{ form.time.help_text }}</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="{{ form.price.auto_id }}" class="form-label">{{ form.price.label }}</label>
+                        {{ form.price }}
+                        <div class="form-text">{{ form.price.help_text }}</div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Сохранить</button>
+                    {{ form.errors }}
+                </form>
+            </div>
+        </div>
+        {% include 'user/menu.html' %}
+    </div>
+</div>
+{% endblock content %}
