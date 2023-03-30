@@ -4,17 +4,24 @@
 <div class="container">
     <div class="header">
         <h1>{{ title }}</h1>
-        <div class="subtitle">{{ subtitle }}</div>
+        <div class="subtitle text-muted">{{ subtitle }}</div>
     </div>
     <div class="row">
         <div class="col-8">
-            <div class="card">
-                <a href="{% url 'manager_booking_add' %}" class="btn btn-primary">Добавить бронирование</a>
+            <div class="card card-manager">
+                <div class="icon"><i class="fi fi-rr-calendar"></i></div>
+                <div>
+                    <h3>Добавление бронирования</h3>
+                    <div class="mb-3 text-muted small">Для того, чтобы добавить новое бронирование на оказание услуг, перейдите по ссылке ниже.</div>
+                    <div>
+                        <a href="{% url 'manager_booking_add' %}" class="btn btn-primary btn-with-icon"><i class="fi fi-rr-add"></i>Добавить бронирование</a>
+                    </div>
+                </div>
             </div>
             <div class="card">
                 <div class="card-heading">
-                    <h2>Lorem15</h2>
-                    <div class="subtitle">Lorem ipsum</div>
+                    <h2>Бронирования</h2>
+                    <div class="subtitle">Список бронирований на услуги</div>
                 </div>
                 <table id="table-bookings" class="display">
                     <thead>
@@ -36,8 +43,8 @@
                         <td>{{ booking.date }}</td>
                         <td>{{ booking.time_start }}</td>
                         <td>
-                            <a href="{% url 'manager_booking' pk=booking.id %}">Смотреть</a>
-                            <button type="button" class="btn btn-icon btn-sm btn-with-icon btn-delete-booking" data-bs-toggle="modal" data-bs-target="#delete-booking" data-url="{% url 'manager_booking_delete' pk=booking.id %}" data-title="{{ booking.master }}"><i class="fi fi-rr-trash"></i></button>
+                            <a href="{% url 'manager_booking' pk=booking.id %}" class="btn btn-sm btn-with-icon"><i class="fi fi-rr-eye"></i>Смотреть</a>
+                            <button type="button" class="btn btn-sm btn-with-icon btn-delete-booking" data-bs-toggle="modal" data-bs-target="#delete-booking" data-url="{% url 'manager_booking_delete' pk=booking.id %}" data-title="{{ booking.master }}"><i class="fi fi-rr-trash"></i>Удалить</button>
                         </td>
                     </tr>
                     {% endfor %}

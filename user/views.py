@@ -129,8 +129,8 @@ class ManagerBookingListView(ListView):
     template_name = 'user/manager/bookings.html'
     context_object_name = 'booking_list'
     extra_context = {
-        'title': 'Управление бронированиями',
-        'subtitle': 'Lorem'
+        'title': 'Бронирования',
+        'subtitle': 'Управление бронированиями салона'
     }
 
 
@@ -141,7 +141,7 @@ class ManagerBookingUpdateView(UpdateView):
     context_object_name = 'service'
     extra_context = {
         'title': 'Редактирование бронирования',
-        'subtitle': 'Lorem'
+        'subtitle': 'Внесение изменений в бронирование'
     }
 
 
@@ -150,8 +150,8 @@ class ManagerBookingCreateView(CreateView):
     form_class = BookingForm
     template_name = 'user/manager/booking.html'
     extra_context = {
-        'title': 'Добавление бронирования',
-        'subtitle': 'Lorem',
+        'title': 'Новое бронирование',
+        'subtitle': 'Добавления нового бронирования',
     }
 
 
