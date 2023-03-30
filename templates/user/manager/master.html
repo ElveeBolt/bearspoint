@@ -4,31 +4,37 @@
 <div class="container">
     <div class="header">
         <h1>{{ title }}</h1>
-        <div class="subtitle">{{ subtitle }}</div>
+        <div class="subtitle text-muted">{{ subtitle }}</div>
     </div>
     <div class="row">
         <div class="col-8">
             <div class="card">
                 <div class="card-heading">
-                    <h2>Lorem15</h2>
-                    <div class="subtitle">Lorem ipsum</div>
+                    <h2>Редактирование мастера</h2>
+                    <div class="subtitle text-muted">Для того, чтобы отредактировать мастера заполните форму ниже</div>
                 </div>
                 <form method="post">
                     {% csrf_token %}
-                    <div class="mb-3">
-                        <label for="{{ form.name.auto_id }}" class="form-label">{{ form.name.label }}</label>
-                        {{ form.name }}
-                        <div class="form-text">{{ form.name.help_text }}</div>
+                    <div class="row">
+                        <div class="col-8">
+                            <div class="mb-3">
+                                <label for="{{ form.name.auto_id }}" class="form-label">{{ form.name.label }}</label>
+                                {{ form.name }}
+                                <div class="form-text">{{ form.name.help_text }}</div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="mb-3">
+                                <label for="{{ form.rang.auto_id }}" class="form-label">{{ form.rang.label }}</label>
+                                {{ form.rang }}
+                                <div class="form-text">{{ form.rang.help_text }}</div>
+                            </div>
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label for="{{ form.phone.auto_id }}" class="form-label">{{ form.phone.label }}</label>
                         {{ form.phone }}
                         <div class="form-text">{{ form.phone.help_text }}</div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="{{ form.rang.auto_id }}" class="form-label">{{ form.rang.label }}</label>
-                        {{ form.rang }}
-                        <div class="form-text">{{ form.rang.help_text }}</div>
                     </div>
                     <div class="mb-3">
                         <label for="{{ form.service.auto_id }}" class="form-label">{{ form.service.label }}</label>
@@ -44,7 +50,7 @@
                         {{ form.status }}
                         <div class="form-text">{{ form.status.help_text }}</div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Сохранить</button>
+                    <button type="submit" class="btn btn-primary btn-with-icon"><i class="fi fi-rr-disk"></i>Сохранить</button>
                     {{ form.errors }}
                 </form>
             </div>

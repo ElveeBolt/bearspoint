@@ -21,8 +21,8 @@ class ManagerMasterListView(ListView):
     template_name = 'user/manager/masters.html'
     context_object_name = 'master_list'
     extra_context = {
-        'title': 'Управление мастерами',
-        'subtitle': 'Lorem'
+        'title': 'Мастера',
+        'subtitle': 'Управление мастерами'
     }
 
 
@@ -33,7 +33,7 @@ class ManagerMasterUpdateView(UpdateView):
     context_object_name = 'master'
     extra_context = {
         'title': 'Редактирование мастера',
-        'subtitle': 'Lorem'
+        'subtitle': 'Внесение изменений к мастеру'
     }
 
 
@@ -43,7 +43,7 @@ class ManagerMasterCreateView(CreateView):
     template_name = 'user/manager/master.html'
     extra_context = {
         'title': 'Добавление мастера',
-        'subtitle': 'Lorem',
+        'subtitle': 'Добавление нового мастера',
     }
 
 

@@ -4,17 +4,24 @@
 <div class="container">
     <div class="header">
         <h1>{{ title }}</h1>
-        <div class="subtitle">{{ subtitle }}</div>
+        <div class="subtitle text-muted">{{ subtitle }}</div>
     </div>
     <div class="row">
         <div class="col-8">
-            <div class="card">
-                <a href="{% url 'manager_masters_add' %}" class="btn btn-primary">Добавить мастера</a>
+            <div class="card card-manager">
+                <div class="icon"><i class="fi fi-rr-user"></i></div>
+                <div>
+                    <h3>Добавление мастера</h3>
+                    <div class="mb-3 text-muted small">Для того, чтобы добавить нового мастера, перейдите по ссылке ниже.</div>
+                    <div>
+                        <a href="{% url 'manager_masters_add' %}" class="btn btn-primary btn-with-icon"><i class="fi fi-rr-add"></i>Добавить мастера</a>
+                    </div>
+                </div>
             </div>
             <div class="card">
                 <div class="card-heading">
-                    <h2>Lorem15</h2>
-                    <div class="subtitle">Lorem ipsum</div>
+                    <h2>Мастера</h2>
+                    <div class="subtitle text-muted">Список мастеров салона</div>
                 </div>
                 <table id="table-masters" class="display">
                     <thead>
@@ -30,12 +37,12 @@
                     {% for master in master_list %}
                     <tr>
                         <td>{{ master.name }}</td>
-                        <td>{{ master.rang }}</td>
+                        <td>{{ master.get_rang_display }}</td>
                         <td>{{ master.phone }}</td>
-                        <td>{{ master.status }}</td>
+                        <td>{{ master.get_status_display }}</td>
                         <td>
-                            <a href="{% url 'manager_master' pk=master.id %}">Смотреть</a>
-                            <button type="button" class="btn btn-icon btn-sm btn-with-icon btn-delete-master" data-bs-toggle="modal" data-bs-target="#delete-master" data-url="{% url 'manager_masters_delete' pk=master.id %}" data-title="{{ master.name }}"><i class="fi fi-rr-trash"></i></button>
+                            <a href="{% url 'manager_master' pk=master.id %}" class="btn btn-sm btn-with-icon"><i class="fi fi-rr-eye"></i>Смотреть</a>
+                            <button type="button" class="btn btn-sm btn-with-icon btn-delete-master" data-bs-toggle="modal" data-bs-target="#delete-master" data-url="{% url 'manager_masters_delete' pk=master.id %}" data-title="{{ master.name }}"><i class="fi fi-rr-trash"></i>Удалить</button>
                         </td>
                     </tr>
                     {% endfor %}
