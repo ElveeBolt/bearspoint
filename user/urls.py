@@ -3,10 +3,14 @@ from .views import UserView, ManagerMasterListView, ManagerMasterUpdateView, Man
     ManagerMasterDeleteView, ManagerServiceDeleteView, ManagerServiceListView, ManagerServiceCreateView, \
     ManagerServiceUpdateView, ManagerCalendarUpdateView, ManagerCalendarListView, ManagerCalendarCreateView, \
     ManagerCalendarDeleteView, ManagerBookingUpdateView, ManagerBookingCreateView, ManagerBookingDeleteView, \
-    ManagerBookingListView
+    ManagerBookingListView, UserLoginView, UserLogoutView
 
 urlpatterns = [
     path('', UserView.as_view(), name='user'),
+
+    path('login', UserLoginView.as_view(), name='login'),
+    path('logout', UserLogoutView.as_view(), name='logout'),
+
     path('manager/masters', ManagerMasterListView.as_view(), name='manager_masters'),
     path('manager/masters/<int:pk>', ManagerMasterUpdateView.as_view(), name='manager_master'),
     path('manager/masters/add', ManagerMasterCreateView.as_view(), name='manager_masters_add'),

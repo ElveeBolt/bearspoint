@@ -1,10 +1,14 @@
+from django.urls import reverse_lazy
+from django.conf import settings
 from django.views.generic import TemplateView, ListView, UpdateView, DeleteView, CreateView
+from django.contrib.auth.views import LoginView, LogoutView
 from master.models import Master, Calendar
 from master.forms import MasterForm, CalendarForm
 from service.forms import ServiceForm
 from service.models import Service
 from booking.models import Booking
 from booking.forms import BookingForm
+from .forms import LoginForm
 
 
 # Create your views here.
@@ -158,3 +162,18 @@ class ManagerBookingCreateView(CreateView):
 class ManagerBookingDeleteView(DeleteView):
     model = Booking
     success_url = "/user/manager/bookings"
+
+
+class UserLoginView(LoginView):
+    form_class = LoginForm
+    template_name = 'user/login.html'
+    success_url = reverse_lazy('user/manager')
+    redirect_authenticated_user = True
+    extra_context = {
+        'title': 'Авторизация',
+        'subtitle': 'Для того, чтобы использовать сервис выполните авторизацию',
+    }
+
+
+class UserLogoutView(LogoutView):
+    next_page = settings.LOGOUT_REDIRECT_URL
