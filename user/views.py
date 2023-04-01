@@ -2,6 +2,7 @@ from django.urls import reverse_lazy
 from django.conf import settings
 from django.views.generic import TemplateView, ListView, UpdateView, DeleteView, CreateView
 from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from master.models import Master, Calendar
 from master.forms import MasterForm, CalendarForm
 from service.forms import ServiceForm
@@ -20,7 +21,7 @@ class UserView(TemplateView):
     }
 
 
-class ManagerMasterListView(ListView):
+class ManagerMasterListView(LoginRequiredMixin, ListView):
     model = Master
     template_name = 'user/manager/masters.html'
     context_object_name = 'master_list'
@@ -30,7 +31,7 @@ class ManagerMasterListView(ListView):
     }
 
 
-class ManagerMasterUpdateView(UpdateView):
+class ManagerMasterUpdateView(LoginRequiredMixin, UpdateView):
     model = Master
     form_class = MasterForm
     template_name = 'user/manager/master.html'
@@ -41,7 +42,7 @@ class ManagerMasterUpdateView(UpdateView):
     }
 
 
-class ManagerMasterCreateView(CreateView):
+class ManagerMasterCreateView(LoginRequiredMixin, CreateView):
     model = Master
     form_class = MasterForm
     template_name = 'user/manager/master.html'
@@ -51,12 +52,12 @@ class ManagerMasterCreateView(CreateView):
     }
 
 
-class ManagerMasterDeleteView(DeleteView):
+class ManagerMasterDeleteView(LoginRequiredMixin, DeleteView):
     model = Master
     success_url = "/user/manager/masters"
 
 
-class ManagerCalendarListView(ListView):
+class ManagerCalendarListView(LoginRequiredMixin, ListView):
     model = Calendar
     template_name = 'user/manager/calendars.html'
     context_object_name = 'calendar_list'
@@ -66,7 +67,7 @@ class ManagerCalendarListView(ListView):
     }
 
 
-class ManagerCalendarUpdateView(UpdateView):
+class ManagerCalendarUpdateView(LoginRequiredMixin, UpdateView):
     model = Calendar
     form_class = CalendarForm
     template_name = 'user/manager/calendar.html'
@@ -77,7 +78,7 @@ class ManagerCalendarUpdateView(UpdateView):
     }
 
 
-class ManagerCalendarCreateView(CreateView):
+class ManagerCalendarCreateView(LoginRequiredMixin, CreateView):
     model = Calendar
     form_class = CalendarForm
     template_name = 'user/manager/calendar.html'
@@ -87,12 +88,12 @@ class ManagerCalendarCreateView(CreateView):
     }
 
 
-class ManagerCalendarDeleteView(DeleteView):
+class ManagerCalendarDeleteView(LoginRequiredMixin, DeleteView):
     model = Calendar
     success_url = "/user/manager/calendars"
 
 
-class ManagerServiceListView(ListView):
+class ManagerServiceListView(LoginRequiredMixin, ListView):
     model = Service
     template_name = 'user/manager/services.html'
     context_object_name = 'service_list'
@@ -102,7 +103,7 @@ class ManagerServiceListView(ListView):
     }
 
 
-class ManagerServiceUpdateView(UpdateView):
+class ManagerServiceUpdateView(LoginRequiredMixin, UpdateView):
     model = Service
     form_class = ServiceForm
     template_name = 'user/manager/service.html'
@@ -113,7 +114,7 @@ class ManagerServiceUpdateView(UpdateView):
     }
 
 
-class ManagerServiceCreateView(CreateView):
+class ManagerServiceCreateView(LoginRequiredMixin, CreateView):
     model = Service
     form_class = ServiceForm
     template_name = 'user/manager/service.html'
@@ -123,12 +124,12 @@ class ManagerServiceCreateView(CreateView):
     }
 
 
-class ManagerServiceDeleteView(DeleteView):
+class ManagerServiceDeleteView(LoginRequiredMixin, DeleteView):
     model = Service
     success_url = "/user/manager/services"
 
 
-class ManagerBookingListView(ListView):
+class ManagerBookingListView(LoginRequiredMixin, ListView):
     model = Booking
     template_name = 'user/manager/bookings.html'
     context_object_name = 'booking_list'
@@ -138,7 +139,7 @@ class ManagerBookingListView(ListView):
     }
 
 
-class ManagerBookingUpdateView(UpdateView):
+class ManagerBookingUpdateView(LoginRequiredMixin, UpdateView):
     model = Booking
     form_class = BookingForm
     template_name = 'user/manager/booking.html'
@@ -149,7 +150,7 @@ class ManagerBookingUpdateView(UpdateView):
     }
 
 
-class ManagerBookingCreateView(CreateView):
+class ManagerBookingCreateView(LoginRequiredMixin, CreateView):
     model = Booking
     form_class = BookingForm
     template_name = 'user/manager/booking.html'
@@ -159,7 +160,7 @@ class ManagerBookingCreateView(CreateView):
     }
 
 
-class ManagerBookingDeleteView(DeleteView):
+class ManagerBookingDeleteView(LoginRequiredMixin, DeleteView):
     model = Booking
     success_url = "/user/manager/bookings"
 
