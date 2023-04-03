@@ -128,6 +128,22 @@ body{
     top: 20px;
 }
 
+.card-master-mini {
+    position: relative;
+    padding-left:60px;
+}
+
+.card-master-mini img{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 0;
+    left: 0;
+    background: var(--main-bg);
+    border-radius: 50%;
+    padding:5px;
+}
+
 .list-menu li {
     padding: 10px 0;
     border: none;

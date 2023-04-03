@@ -1,5 +1,74 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
-Услуга
+<div class="container">
+    <div class="header">
+        <h1>{{ title }}</h1>
+        <div class="subtitle text-muted">{{ subtitle }}</div>
+    </div>
+    <div class="row">
+        <div class="col-8">
+            <div class="card">
+                <div class="card-heading">
+                    <h2>{{ service.title }}</h2>
+                    <div class="subtitle text-muted">Детальное описание услуги</div>
+                </div>
+                <div class="mb-3">{{ service.description }}</div>
+                <div class="text-muted d-flex">
+                    <div class="time"><i class="fi fi-rr-time-oclock me-1"></i>{{ service.time }} мин.</div>
+                    <div class="price ms-3"><i class="fi fi-rr-coins me-1"></i>{{ service.price }} грн.</div>
+                 </div>
+            </div>
+            <div class="card">
+                <div class="card-heading">
+                    <h2>Запись на услугу</h2>
+                    <div class="subtitle text-muted">Для того, чтобы записаться на услугу выберите специалиста и время</div>
+                </div>
+
+                {% for booking in bookings %}
+                        <div class="mb-3">
+                            <div class="card-master-mini">
+                                <img src="{% static 'img/barber.png' %}" alt="">
+                                <dic class="title">{{ booking.master }}</dic>
+                                <div class="text-muted">{{ booking.master.get_rang_display }}</div>
+                            </div>
+                        </div>
+
+                        {% for form in booking.forms %}
+                            <form method="post" class="mb-3">
+                                {% csrf_token %}
+                                {{ form.master }}
+                                <div class="row">
+                                    <div class="col-4">
+                                        <div class="mb-3">
+                                            <div class="mb-3">
+                                                {{ form.date }}
+                                                <div class="form-text">{{ form.date.help_text }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="mb-3">
+                                            <div class="mb-3">
+                                                {{ form.time_start }}
+                                                <div class="form-text">{{ form.time_start.help_text }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="d-grid">
+                                            <button type="submit" class="btn btn-primary btn-with-icon"><i class="fi fi-rr-disk"></i>Бронировать</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        {% endfor %}
+                {% endfor %}
+
+            </div>
+        </div>
+
+    </div>
+</div>
 {% endblock content %}
