@@ -85,7 +85,8 @@ class BookingServiceForm(forms.ModelForm):
         widget=forms.NumberInput(
             attrs={
                 'class': 'form-control',
-                'placeholder': 'Укажите услугу...'
+                'placeholder': 'Укажите услугу...',
+                'type': 'hidden'
             }
         )
     )
