@@ -133,6 +133,10 @@ body{
     padding-left:60px;
 }
 
+.card-master-mini .title {
+    font-weight: 500;
+}
+
 .card-master-mini img{
     position: absolute;
     width: 50px;
