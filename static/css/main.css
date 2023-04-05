@@ -91,6 +91,10 @@ body{
     height: 42px;
 }
 
+textarea.form-control {
+    height: auto;
+}
+
 .navbar{
     background: var(--navbar-bg);
     margin-bottom: 30px;

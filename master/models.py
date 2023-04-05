@@ -17,6 +17,7 @@ class Master(models.Model):
     rang = models.IntegerField(default=0, choices=RANG_CHOICES, verbose_name='Ранг')
     phone = models.IntegerField(verbose_name='Телефон')
     service = models.ManyToManyField(Service, verbose_name='Услуги')
+    description = models.TextField(null=True, verbose_name='Описание')
     status = models.IntegerField(default=0, choices=STATUS_CHOICES, verbose_name='Статус')
 
     def __str__(self):

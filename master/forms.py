@@ -58,6 +58,18 @@ class MasterForm(forms.ModelForm):
             }
         )
     )
+    description = forms.CharField(
+        label='Описание:',
+        required=False,
+        help_text='Описание мастера',
+        widget=forms.Textarea(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Введите описание к мастеру...',
+                'rows': 5
+            }
+        )
+    )
 
     class Meta:
         model = Master

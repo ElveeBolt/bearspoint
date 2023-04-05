@@ -14,8 +14,11 @@
                     <h2>{{ master.name }}</h2>
                     <div class="subtitle text-muted">Детальное описание мастера</div>
                 </div>
-                <div class="mb-3">{{ master.phone }}</div>
-                <div class="mb-3">{{ master.get_rang_display }}</div>
+                <div class="mb-3">{{ master.description }}</div>
+                <div class="text-muted text-bold d-flex">
+                    <div><i class="fi fi-rr-circle-phone-flip me-1"></i>{{ master.phone }}</div>
+                    <div class="ms-3"><i class="fi fi-rr-chess-queen me-1"></i>{{ master.get_rang_display }}</div>
+                 </div>
             </div>
             <div class="card">
                 <div class="card-heading">
