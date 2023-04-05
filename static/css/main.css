@@ -21,11 +21,18 @@ body{
     color: var(--text-muted)!important;
 }
 
+.text-bold{
+    font-weight: 500;
+}
+
+
 .btn {
     border: none;
     font-size: 14px;
     font-weight: 500;
     padding: 10px 15px;
+    border-radius: 0;
+    height:42px;
     background: var(--submain-color);
     color: var(--main-color);
     text-decoration:none!important;
@@ -63,6 +70,7 @@ body{
 .btn-sm {
     font-size: 13px;
     padding: 5px 15px;
+    height: auto;
 }
 
 .btn-sm.btn-with-icon .fi {
@@ -77,13 +85,34 @@ body{
     margin: 0;
 }
 
+.form-select,
+.form-control{
+    border-radius: 0;
+    height: 42px;
+}
+
 .navbar{
     background: var(--navbar-bg);
     margin-bottom: 30px;
 }
 
+.navbar-brand {
+    color: var(--main-color);
+    font-weight: bold;
+}
+
 .nav-link {
     color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.nav-link:hover{
+    color: var(--main-color);
+}
+
+h2{
+    font-size:22px
 }
 
 .card{
@@ -146,6 +175,10 @@ body{
     background: var(--main-bg);
     border-radius: 50%;
     padding:5px;
+}
+
+.card-service .text{
+    font-size: 14px;
 }
 
 .list-menu li {
