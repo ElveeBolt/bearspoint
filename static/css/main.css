@@ -181,6 +181,13 @@ h2{
     font-size: 14px;
 }
 
+.rang-span{
+    padding: 5px 10px;
+    background: var(--main-bg);
+    color: var(--main-color);
+    font-weight: bold;
+    }
+
 .list-menu li {
     padding: 10px 0;
     border: none;

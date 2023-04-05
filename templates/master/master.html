@@ -12,7 +12,7 @@
             <div class="card">
                 <div class="card-heading">
                     <h2>{{ master.name }}</h2>
-                    <div class="subtitle text-muted">Детальное описание услуги</div>
+                    <div class="subtitle text-muted">Детальное описание мастера</div>
                 </div>
                 <div class="mb-3">{{ master.phone }}</div>
                 <div class="mb-3">{{ master.get_rang_display }}</div>
@@ -22,7 +22,6 @@
                     <h2>Запись на услугу</h2>
                     <div class="subtitle text-muted">Для того, чтобы записаться на услугу выберите услугу и время</div>
                 </div>
-
                 {% for booking in bookings %}
                         <div class="mb-3">
                             <div class="card-master-mini">
@@ -34,7 +33,6 @@
                                  </div>
                             </div>
                         </div>
-
                         {% for form in booking.forms %}
                             <form method="post" class="mb-3">
                                 {% csrf_token %}
@@ -65,6 +63,24 @@
                             </form>
                         {% endfor %}
                 {% endfor %}
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card">
+                <div class="card-heading">
+                    <h2>Ранг мастера</h2>
+                    <div class="subtitle text-muted">Описание рангов мастеров</div>
+                </div>
+                <div class="mb-3">
+                    <span class="rang-span"><i class="fi fi-rr-chess-queen me-1"></i>Ранг 1</span>
+                    <div class="mt-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Amet, doloribus earum impedit porro quisquam repellendus.</div>
+                </div>
+                <div class="">
+                    <span class="rang-span"><i class="fi fi-rr-chess-queen me-1"></i>Ранг 2</span>
+                    <div class="mt-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Amet, doloribus earum impedit porro quisquam repellendus.</div>
+                </div>
             </div>
         </div>
 
