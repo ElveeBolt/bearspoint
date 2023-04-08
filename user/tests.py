@@ -39,7 +39,6 @@ class ManagerTestCase(TestCase):
         master = Master.objects.filter(name='Мастер 1')
         self.assertEquals(len(master), 1)
 
-
     def test_calendar_post(self):
         self.client.login(username='admin', password='admin')
         master = Master.objects.create(name='Мастер 4', phone=38050695200, description='text', rang=0, status=1)
