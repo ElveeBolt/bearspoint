@@ -49,6 +49,6 @@ class ManagerTestCase(TestCase):
             'time_start': '08:00',
             'time_end': '17:00',
         })
-        calendar = Calendar.objects.all()
+        calendar = Calendar.objects.filter(master=master.id)
         self.assertEquals(len(calendar), 1)
 
