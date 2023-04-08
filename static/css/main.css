@@ -185,6 +185,30 @@ h2{
     font-size: 14px;
 }
 
+.card-empty{
+    position: relative;
+    padding-left: 100px;
+}
+
+.card-empty h2{
+    font-size: 22px;
+}
+
+.card-empty .icon {
+    background: var(--main-bg);
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    line-height: 1;
+    left: 20px;
+    top: 20px;
+    position: absolute;
+    color: var(--main-color-hover);
+}
+
 .rang-span{
     padding: 5px 10px;
     background: var(--main-bg);
