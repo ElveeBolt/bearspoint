@@ -1,6 +1,8 @@
 from django.urls import reverse_lazy
+from django.shortcuts import redirect
 from django.conf import settings
 from django.views.generic import TemplateView, ListView, UpdateView, DeleteView, CreateView
+from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from master.models import Master, Calendar
@@ -9,6 +11,7 @@ from service.forms import ServiceForm
 from service.models import Service
 from booking.models import Booking
 from booking.forms import BookingForm
+from user.forms import SignupForm
 from .forms import LoginForm
 
 
@@ -174,6 +177,23 @@ class UserLoginView(LoginView):
         'title': 'Авторизация',
         'subtitle': 'Для того, чтобы использовать сервис выполните авторизацию',
     }
+
+
+class UserSignupView(CreateView):
+    model = User
+    form_class = SignupForm
+    template_name = 'user/signup.html'
+    success_url = reverse_lazy('login')
+    extra_context = {
+        'title': 'Регистрация профиля',
+        'subtitle': 'Создайте профиль для того, чтобы использовать BearsPoint',
+    }
+
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return redirect('user')
+        else:
+            return super().dispatch(request, *args, **kwargs)
 
 
 class UserLogoutView(LogoutView):
