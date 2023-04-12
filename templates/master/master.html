@@ -25,6 +25,9 @@
                     <h2>Запись на услугу</h2>
                     <div class="subtitle text-muted">Для того, чтобы записаться на услугу выберите услугу и время</div>
                 </div>
+                {% if need_auth is True %}
+                    Нужно авторизироватся
+                {% else %}
                 {% for booking in bookings %}
                         <div class="mb-3">
                             <div class="card-master-mini">
@@ -66,6 +69,7 @@
                             </form>
                         {% endfor %}
                 {% endfor %}
+                {% endif %}
             </div>
         </div>
         <div class="col-4">
