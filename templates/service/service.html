@@ -25,6 +25,9 @@
                     <h2>Запись на услугу</h2>
                     <div class="subtitle text-muted">Для того, чтобы записаться на услугу выберите специалиста и время</div>
                 </div>
+                {% if need_auth is True %}
+                    Нужно авторизироватся
+                {% else %}
                 {% for booking in bookings %}
                         <div class="mb-3">
                             <div class="card-master-mini">
@@ -33,7 +36,6 @@
                                 <div class="text-muted"><i class="fi fi-rr-chess-queen me-1"></i>{{ booking.master.get_rang_display }}</div>
                             </div>
                         </div>
-
                         {% for form in booking.forms %}
                             <form method="post" class="mb-3">
                                 {% csrf_token %}
@@ -64,6 +66,7 @@
                             </form>
                         {% endfor %}
                 {% endfor %}
+                {% endif %}
             </div>
         </div>
 

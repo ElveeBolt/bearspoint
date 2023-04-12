@@ -50,6 +50,11 @@ class ServiceDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         masters = Master.objects.filter(status=1, service=self.object)
+
+        if not self.request.user.is_authenticated:
+            context['need_auth'] = True
+            return context
+
         bookings = []
         for master in masters:
             forms = []
