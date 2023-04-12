@@ -38,8 +38,12 @@
                             {% endfor %}
                         {% endif %}
                     </div>
-                    <div class="d-grid">
+                    <div class="d-grid mb-3">
                         <button class="btn btn-primary btn-with-icon" type="submit"><i class="fi fi-rr-sign-in-alt"></i>Регистрация</button>
+                    </div>
+                    <div class="text-center text-muted small text-bold">
+                        У вас есть аккаунт на BearsPoint?<br>
+                        <a href="{% url 'login' %}">Войти</a>
                     </div>
                 </form>
             </div>
