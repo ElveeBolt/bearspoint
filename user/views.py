@@ -5,6 +5,7 @@ from django.views.generic import TemplateView, ListView, UpdateView, DeleteView,
 from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from user.mixins import UserCheckAdministratorMixin
 from master.models import Master, Calendar
 from master.forms import MasterForm, CalendarForm
 from service.forms import ServiceForm
@@ -24,7 +25,7 @@ class UserView(TemplateView):
     }
 
 
-class ManagerMasterListView(LoginRequiredMixin, ListView):
+class ManagerMasterListView(LoginRequiredMixin, UserCheckAdministratorMixin, ListView):
     model = Master
     template_name = 'user/manager/masters.html'
     context_object_name = 'master_list'
@@ -34,7 +35,7 @@ class ManagerMasterListView(LoginRequiredMixin, ListView):
     }
 
 
-class ManagerMasterUpdateView(LoginRequiredMixin, UpdateView):
+class ManagerMasterUpdateView(LoginRequiredMixin, UserCheckAdministratorMixin, UpdateView):
     model = Master
     form_class = MasterForm
     template_name = 'user/manager/master.html'
@@ -45,7 +46,7 @@ class ManagerMasterUpdateView(LoginRequiredMixin, UpdateView):
     }
 
 
-class ManagerMasterCreateView(LoginRequiredMixin, CreateView):
+class ManagerMasterCreateView(LoginRequiredMixin, UserCheckAdministratorMixin, CreateView):
     model = Master
     form_class = MasterForm
     template_name = 'user/manager/master.html'
@@ -55,12 +56,12 @@ class ManagerMasterCreateView(LoginRequiredMixin, CreateView):
     }
 
 
-class ManagerMasterDeleteView(LoginRequiredMixin, DeleteView):
+class ManagerMasterDeleteView(LoginRequiredMixin, UserCheckAdministratorMixin, DeleteView):
     model = Master
     success_url = "/user/manager/masters"
 
 
-class ManagerCalendarListView(LoginRequiredMixin, ListView):
+class ManagerCalendarListView(LoginRequiredMixin, UserCheckAdministratorMixin, ListView):
     model = Calendar
     template_name = 'user/manager/calendars.html'
     context_object_name = 'calendar_list'
@@ -70,7 +71,7 @@ class ManagerCalendarListView(LoginRequiredMixin, ListView):
     }
 
 
-class ManagerCalendarUpdateView(LoginRequiredMixin, UpdateView):
+class ManagerCalendarUpdateView(LoginRequiredMixin, UserCheckAdministratorMixin, UpdateView):
     model = Calendar
     form_class = CalendarForm
     template_name = 'user/manager/calendar.html'
@@ -81,7 +82,7 @@ class ManagerCalendarUpdateView(LoginRequiredMixin, UpdateView):
     }
 
 
-class ManagerCalendarCreateView(LoginRequiredMixin, CreateView):
+class ManagerCalendarCreateView(LoginRequiredMixin, UserCheckAdministratorMixin, CreateView):
     model = Calendar
     form_class = CalendarForm
     template_name = 'user/manager/calendar.html'
@@ -91,12 +92,12 @@ class ManagerCalendarCreateView(LoginRequiredMixin, CreateView):
     }
 
 
-class ManagerCalendarDeleteView(LoginRequiredMixin, DeleteView):
+class ManagerCalendarDeleteView(LoginRequiredMixin, UserCheckAdministratorMixin, DeleteView):
     model = Calendar
     success_url = "/user/manager/calendars"
 
 
-class ManagerServiceListView(LoginRequiredMixin, ListView):
+class ManagerServiceListView(LoginRequiredMixin, UserCheckAdministratorMixin, ListView):
     model = Service
     template_name = 'user/manager/services.html'
     context_object_name = 'service_list'
@@ -106,7 +107,7 @@ class ManagerServiceListView(LoginRequiredMixin, ListView):
     }
 
 
-class ManagerServiceUpdateView(LoginRequiredMixin, UpdateView):
+class ManagerServiceUpdateView(LoginRequiredMixin, UserCheckAdministratorMixin, UpdateView):
     model = Service
     form_class = ServiceForm
     template_name = 'user/manager/service.html'
@@ -117,7 +118,7 @@ class ManagerServiceUpdateView(LoginRequiredMixin, UpdateView):
     }
 
 
-class ManagerServiceCreateView(LoginRequiredMixin, CreateView):
+class ManagerServiceCreateView(LoginRequiredMixin, UserCheckAdministratorMixin, CreateView):
     model = Service
     form_class = ServiceForm
     template_name = 'user/manager/service.html'
@@ -127,12 +128,12 @@ class ManagerServiceCreateView(LoginRequiredMixin, CreateView):
     }
 
 
-class ManagerServiceDeleteView(LoginRequiredMixin, DeleteView):
+class ManagerServiceDeleteView(LoginRequiredMixin, UserCheckAdministratorMixin, DeleteView):
     model = Service
     success_url = "/user/manager/services"
 
 
-class ManagerBookingListView(LoginRequiredMixin, ListView):
+class ManagerBookingListView(LoginRequiredMixin, UserCheckAdministratorMixin, ListView):
     model = Booking
     template_name = 'user/manager/bookings.html'
     context_object_name = 'booking_list'
@@ -142,7 +143,7 @@ class ManagerBookingListView(LoginRequiredMixin, ListView):
     }
 
 
-class ManagerBookingUpdateView(LoginRequiredMixin, UpdateView):
+class ManagerBookingUpdateView(LoginRequiredMixin, UserCheckAdministratorMixin, UpdateView):
     model = Booking
     form_class = BookingForm
     template_name = 'user/manager/booking.html'
@@ -153,7 +154,7 @@ class ManagerBookingUpdateView(LoginRequiredMixin, UpdateView):
     }
 
 
-class ManagerBookingCreateView(LoginRequiredMixin, CreateView):
+class ManagerBookingCreateView(LoginRequiredMixin, UserCheckAdministratorMixin, CreateView):
     model = Booking
     form_class = BookingForm
     template_name = 'user/manager/booking.html'
@@ -163,7 +164,7 @@ class ManagerBookingCreateView(LoginRequiredMixin, CreateView):
     }
 
 
-class ManagerBookingDeleteView(LoginRequiredMixin, DeleteView):
+class ManagerBookingDeleteView(LoginRequiredMixin, UserCheckAdministratorMixin, DeleteView):
     model = Booking
     success_url = "/user/manager/bookings"
 
