@@ -1,7 +1,7 @@
 from datetime import datetime, time
 from django.test import TestCase
 from django.test import Client
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from service.models import Service
 from master.models import Master, Calendar
 
@@ -16,6 +16,14 @@ class ManagerTestCase(TestCase):
         user.set_password('admin')
         user.save()
 
+        # Create group
+        group = Group.objects.create(name='administrator')
+        group.save()
+
+        # Add group to user
+        user.groups.add(group)
+        user.save()
+
     def test_service_post(self):
         self.client.login(username='admin', password='admin')
         response = self.client.post('/user/manager/services/add', {
@@ -25,6 +33,7 @@ class ManagerTestCase(TestCase):
             'time': '60'
         })
         service = Service.objects.filter(title='Сервис 1')
+        print(service)
         self.assertEquals(len(service), 1)
 
     def test_service_delete(self):
