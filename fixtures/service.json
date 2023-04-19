@@ -1,0 +1,12 @@
+[
+{
+    "model": "service.service",
+    "pk": 1,
+    "fields": {
+        "title": "Сервис 1",
+        "description": "Описание сервиса",
+        "time": 60,
+        "price": 300
+    }
+}
+]

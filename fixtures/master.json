@@ -1,0 +1,37 @@
+[
+{
+    "model": "master.master",
+    "pk": 1,
+    "fields": {
+        "name": "Мастер 1",
+        "rang": 0,
+        "phone": 380506896320,
+        "description": "Описание мастера",
+        "status": 1,
+        "service": [
+            1
+        ]
+    }
+},
+
+{
+    "model": "master.calendar",
+    "pk": 1,
+    "fields": {
+        "master": 1,
+        "date": "2020-12-12",
+        "time_start": "08:00:00",
+        "time_end": "17:00:00"
+    }
+},
+{
+    "model": "master.calendar",
+    "pk": 2,
+    "fields": {
+        "master": 1,
+        "date": "2020-12-13",
+        "time_start": "08:00:00",
+        "time_end": "17:00:00"
+    }
+}
+]
