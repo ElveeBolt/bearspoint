@@ -8,5 +8,15 @@
         "time": 60,
         "price": 300
     }
+},
+{
+    "model": "service.service",
+    "pk": 2,
+    "fields": {
+        "title": "Сервис 2",
+        "description": "Описание сервиса",
+        "time": 30,
+        "price": 300
+    }
 }
 ]

@@ -1,8 +1,6 @@
 from django.test import TestCase
-from django.contrib.auth.models import User
 from datetime import datetime, time
 from .utils import convert_period_to_set, get_workday_master_time, calc_period
-from .models import Booking
 from master.models import Master, Calendar
 from service.models import Service
 
@@ -44,35 +42,12 @@ class ConvertPeriodToSetTestCase(TestCase):
 
 
 class CalcPeriodTestCase(TestCase):
-    def setUp(self):
-        user = User.objects.create(username='user', password='password')
-
-        service_1 = Service.objects.create(title='Сервис 1', description='text', price=300, time=60)
-        service_2 = Service.objects.create(title='Сервис 2', description='text', price=300, time=30)
-
-        master_1 = Master.objects.create(name='Мастер 1', phone=38050695200, description='text', rang=0, status=1)
-        master_1.service.add(service_1)
-        master_2 = Master.objects.create(name='Мастер 2', phone=38050333300, description='text', rang=0, status=1)
-        master_2.service.add(service_1)
-        master_3 = Master.objects.create(name='Мастер 3', phone=38050333322, description='text', rang=0, status=1)
-        master_3.service.add(service_1, service_2)
-        master_4 = Master.objects.create(name='Мастер 4', phone=38050695200, description='text', rang=0, status=0)
-        master_4.service.add(service_1)
-
-        Calendar.objects.create(master=master_1, date=datetime(2023, 4, 6), time_start=time(8, 0), time_end=time(10, 0))
-        Calendar.objects.create(master=master_2, date=datetime(2023, 4, 6), time_start=time(8, 0), time_end=time(10, 0))
-        Calendar.objects.create(master=master_3, date=datetime(2023, 4, 6), time_start=time(8, 0), time_end=time(10, 0))
-        Calendar.objects.create(master=master_4, date=datetime(2023, 4, 6), time_start=time(8, 0), time_end=time(9, 15))
-
-        Booking.objects.create(master=master_1, service=service_1, user=user, date=datetime(2023, 4, 6), time_start=time(8, 0))
-        Booking.objects.create(master=master_3, service=service_2, user=user, date=datetime(2023, 4, 6), time_start=time(8, 30))
-        Booking.objects.create(master=master_4, service=service_2, user=user, date=datetime(2023, 4, 6),time_start=time(8, 0))
-        Booking.objects.create(master=master_4, service=service_2, user=user, date=datetime(2023, 4, 6), time_start=time(8, 45))
+    fixtures = ['fixtures/user.json', 'fixtures/master.json', 'fixtures/service.json', 'fixtures/booking.json']
 
     def test_get_workday_master_time(self):
         master = Master.objects.get(name="Мастер 1")
         service = Service.objects.get(title="Сервис 1")
-        calendar = Calendar.objects.get(master=master)
+        calendar = Calendar.objects.get(master=master, date="2023-04-06")
         expected_result = {
             datetime(2023, 4, 6, 8, 0),
             datetime(2023, 4, 6, 8, 15),

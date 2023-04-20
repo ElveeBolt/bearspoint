@@ -13,6 +13,48 @@
         ]
     }
 },
+{
+    "model": "master.master",
+    "pk": 2,
+    "fields": {
+        "name": "Мастер 2",
+        "rang": 0,
+        "phone": 380506896320,
+        "description": "Описание мастера",
+        "status": 1,
+        "service": [
+            1
+        ]
+    }
+},
+{
+    "model": "master.master",
+    "pk": 3,
+    "fields": {
+        "name": "Мастер 3",
+        "rang": 0,
+        "phone": 380506896320,
+        "description": "Описание мастера",
+        "status": 1,
+        "service": [
+            1, 2
+        ]
+    }
+},
+{
+    "model": "master.master",
+    "pk": 4,
+    "fields": {
+        "name": "Мастер 4",
+        "rang": 0,
+        "phone": 380506896320,
+        "description": "Описание мастера",
+        "status": 0,
+        "service": [
+            1
+        ]
+    }
+},
 
 {
     "model": "master.calendar",
@@ -32,6 +74,46 @@
         "date": "2020-12-13",
         "time_start": "08:00:00",
         "time_end": "17:00:00"
+    }
+},
+{
+    "model": "master.calendar",
+    "pk": 3,
+    "fields": {
+        "master": 1,
+        "date": "2023-04-06",
+        "time_start": "08:00:00",
+        "time_end": "10:00:00"
+    }
+},
+{
+    "model": "master.calendar",
+    "pk": 4,
+    "fields": {
+        "master": 2,
+        "date": "2023-04-06",
+        "time_start": "08:00:00",
+        "time_end": "10:00:00"
+    }
+},
+{
+    "model": "master.calendar",
+    "pk": 5,
+    "fields": {
+        "master": 3,
+        "date": "2023-04-06",
+        "time_start": "08:00:00",
+        "time_end": "10:00:00"
+    }
+},
+{
+    "model": "master.calendar",
+    "pk": 6,
+    "fields": {
+        "master": 4,
+        "date": "2023-04-06",
+        "time_start": "08:00:00",
+        "time_end": "09:15:00"
     }
 }
 ]
