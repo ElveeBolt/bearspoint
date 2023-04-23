@@ -1,6 +1,7 @@
 import datetime
 from django.views.generic import DetailView, ListView
 from django.shortcuts import redirect
+from django.conf import settings
 from .models import Service
 from master.models import Master
 from booking.forms import BookingServiceForm
@@ -13,6 +14,7 @@ class ServiceListView(ListView):
     model = Service
     template_name = 'service/service_list.html'
     context_object_name = 'service_list'
+    paginate_by = settings.RESULTS_PER_PAGE
     extra_context = {
         'title': 'Услуги',
         'subtitle': 'Список наших цен и услуг доступных в ближайшие 7 дней'

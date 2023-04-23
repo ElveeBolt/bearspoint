@@ -1,4 +1,5 @@
 import datetime
+from django.conf import settings
 from django.shortcuts import redirect
 from django.views.generic import DetailView, ListView
 from .models import Master
@@ -13,6 +14,7 @@ class MasterListView(ListView):
     model = Master
     template_name = 'master/master_list.html'
     context_object_name = 'master_list'
+    paginate_by = settings.RESULTS_PER_PAGE
     extra_context = {
         'title': 'Мастера',
         'subtitle': 'Список наших мастеров'
